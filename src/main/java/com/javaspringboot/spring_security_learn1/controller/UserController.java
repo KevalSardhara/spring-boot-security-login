@@ -38,11 +38,11 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userRegisterResponceDto);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<Boolean> userLogin(@RequestBody UserRegisterRequestDto userRegisterRequestDto) {
-        Boolean isLogin = authService.login(userRegisterRequestDto);
-        return ResponseEntity.status(HttpStatus.OK).body(isLogin);
-    }
+//    @PostMapping("/login")
+//    public ResponseEntity<Boolean> userLogin(@RequestBody UserRegisterRequestDto userRegisterRequestDto) {
+//        Boolean isLogin = authService.login(userRegisterRequestDto);
+//        return ResponseEntity.status(HttpStatus.OK).body(isLogin);
+//    }
 
     @GetMapping("/csrf")
     public ResponseEntity<CsrfToken> getToken(CsrfToken csrfToken) {

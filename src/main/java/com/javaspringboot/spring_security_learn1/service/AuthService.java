@@ -16,11 +16,16 @@ public class AuthService {
 
     private final UserService userService;
     private final RoleService roleService;
-    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final PasswordEncoder passwordEncoder;
+//    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    public AuthService(UserService userService, RoleService roleService) {
+    public AuthService(
+            UserService userService,
+            RoleService roleService,
+            PasswordEncoder passwordEncoder) {
         this.userService = userService;
         this.roleService = roleService;
+        this.passwordEncoder = passwordEncoder;
     }
 
 //    public AuthService(UserService userService, PasswordEncoder passwordEncoder) {
