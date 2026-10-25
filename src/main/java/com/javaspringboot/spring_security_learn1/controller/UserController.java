@@ -5,6 +5,7 @@ import com.javaspringboot.spring_security_learn1.dto.UserRegisterResponceDto;
 import com.javaspringboot.spring_security_learn1.service.AuthService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CsrfToken;
@@ -23,13 +24,13 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<String> getAllUsers() {
+    public ResponseEntity<String> getAllUsers(Authentication authentication) {
         String password = "keval1234";
         String encodedPassword = passwordEncoder.encode(password);
         System.out.println("Random Password : " + password + "\nEncoded Password : " + encodedPassword);
         System.out.println("Password Match : " + passwordEncoder.matches("keval123", "$2a$10$izjjasBNvTvdbzHy8lShj.LtVAPVKBvCCuuP/FhZR2RhTO6MHM.N."));
 
-        return ResponseEntity.status(HttpStatus.OK).body("Get All users successfully!!!");
+        return ResponseEntity.status(HttpStatus.OK).body("Get All users successfully!!! : " + authentication.getName());
     }
 
     @PostMapping("/register")
